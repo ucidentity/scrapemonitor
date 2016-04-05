@@ -294,13 +294,18 @@ class ScrapeMonitorDaemon {
      * Start each of the individual monitors.
      */
     protected void startMonitors() {
-        monitorExecutors.values().each { MonitorExecutor it ->
-            it.start()
-            log.info("Monitor ${it.name} started")
-        }
+        /**
+         * The destination consumers should be started first so that
+         * they are already running by the time the monitors start
+         * sending data to their destinations.
+         */
         destinationExecutors.values().each { MonitorExecutor it ->
             it.start()
             log.info("Destination consumer ${it.name} started")
+        }
+        monitorExecutors.values().each { MonitorExecutor it ->
+            it.start()
+            log.info("Monitor ${it.name} started")
         }
     }
 
@@ -308,6 +313,10 @@ class ScrapeMonitorDaemon {
      * Stop each of the individual monitors.
      */
     protected void stopMonitors() {
+        /**
+         * Monitor executors should be stopped before their destinations
+         * are stopped.
+         */
         monitorExecutors.values().each { MonitorExecutor it ->
             it.stop()
             log.info("Monitor ${it.name} stopped")

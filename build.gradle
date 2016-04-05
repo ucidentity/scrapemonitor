@@ -57,6 +57,12 @@ test {
     maxParallelForks = 1
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': project.mainClassName
+    }
+}
+
 run {
     /**
      * Notable system properties that may be of interest:

@@ -177,7 +177,7 @@ class FileMonitorExecutor extends AbstractCamelMonitorExecutor<FileMonitorConfig
             }
 
             @Override
-            void truncateEvent(Path path) {
+            void truncateEvent(Path path, boolean underThreshold) {
 
             }
 

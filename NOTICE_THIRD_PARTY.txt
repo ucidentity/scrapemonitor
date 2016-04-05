@@ -1,0 +1,16 @@
+ScrapeMonitor uses third-party software that may be distributed under
+licenses different than the ScrapeMonitor license.
+
+#1) Gradle
+
+Gradle is licensed under the Apache License, Version 2.0:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+See http://gradle.org/license/ for more information.
+
+These files are:
+    gradle/wrapper/gradle-wrapper.properties
+    gradle/wrapper/gradle-wrapper.jar gradlew gradlew.bat
+
+Gradle source code is available for download at http://gradle.org/.

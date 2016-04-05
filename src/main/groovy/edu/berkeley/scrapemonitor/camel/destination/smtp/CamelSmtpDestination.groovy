@@ -28,6 +28,7 @@
 package edu.berkeley.scrapemonitor.camel.destination.smtp
 
 import edu.berkeley.scrapemonitor.camel.CamelMonitorExecutor
+import edu.berkeley.scrapemonitor.camel.CamelRouteUtil
 import groovy.text.GStringTemplateEngine
 import groovy.text.Template
 import org.apache.camel.CamelContext
@@ -67,6 +68,9 @@ class CamelSmtpDestination implements CamelMonitorExecutor<CamelSmtpDestinationC
 
         // this starts the consumer which monitors the file
         camelContext.addRoutes(createRouteBuilder())
+        // wait up to 5s for it to start
+        if (!CamelRouteUtil.waitForRouteToStart(camelContext, monitorContext.routeId, 5000))
+            throw new RuntimeException("Route ${monitorContext.routeId} could not be started")
     }
 
     void stop() {
@@ -88,7 +92,7 @@ class CamelSmtpDestination implements CamelMonitorExecutor<CamelSmtpDestinationC
                 MailEndpoint endpoint = (MailEndpoint) context.getEndpoint(endpointUri)
 
                 // configure a consumer that routes from the direct endpoint to the smtp endpoint, which sends the email
-                from(camelUri).process(new Processor() {
+                from(camelUri).routeId(monitorContext.routeId).process(new Processor() {
                     @Override
                     void process(Exchange exchange) throws Exception {
                         // convert the subjectTemplate to an actual string

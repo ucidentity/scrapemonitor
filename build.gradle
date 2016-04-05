@@ -10,7 +10,7 @@ sourceCompatibility = 1.7
 mainClassName = "edu.berkeley.scrapemonitor.ScrapeMonitorDaemon"
 
 run {
-  systemProperty "edu.berkeley.scrapemonitor.config_file", System.getProperty("edu.berkeley.scrapemonitor.config_file")
+    systemProperty "edu.berkeley.scrapemonitor.config_file", System.getProperty("edu.berkeley.scrapemonitor.config_file")
 }
 
 repositories {
@@ -18,15 +18,16 @@ repositories {
     // If using a Maven proxy, put the property settings in
     // ~/.gradle/gradle.properties for default_proxy_url,
     // default_proxy_username and default_proxy_password.
-    if (binding.hasVariable("default_proxy_url")) {
+    if (hasProperty("default_proxy_url")) {
         maven {
-            url default_proxy_url
+            url property("default_proxy_url")
             credentials {
-                username default_proxy_username
-                password default_proxy_password
+                username property("default_proxy_username")
+                password property("default_proxy_password")
             }
         }
     }
+    jcenter()
     mavenCentral()
 }
 
@@ -51,4 +52,10 @@ dependencies {
     // GreenMail for testing SMTP
     testCompile "com.icegreen:greenmail:1.5.0"
     testCompile "com.icegreen:greenmail-standalone:1.5.0"
+
+    compile "software.javatailer:javatailer:0.1.1"
+}
+
+test {
+    maxParallelForks = 1
 }

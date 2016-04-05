@@ -18,7 +18,7 @@ repositories {
     // If using a Maven proxy, put the property settings in
     // ~/.gradle/gradle.properties for default_proxy_url,
     // default_proxy_username and default_proxy_password.
-    if (hasProperty("default_proxy_url")) {
+    if (project.hasProperty("default_proxy_url")) {
         maven {
             url property("default_proxy_url")
             credentials {

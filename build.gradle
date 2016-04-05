@@ -9,10 +9,6 @@ sourceCompatibility = 1.7
 
 mainClassName = "edu.berkeley.scrapemonitor.ScrapeMonitorDaemon"
 
-run {
-    systemProperty "edu.berkeley.scrapemonitor.config_file", System.getProperty("edu.berkeley.scrapemonitor.config_file")
-}
-
 repositories {
     mavenLocal()
     // If using a Maven proxy, put the property settings in
@@ -58,4 +54,21 @@ dependencies {
 
 test {
     maxParallelForks = 1
+}
+
+run {
+    /**
+     * Notable system properties that may be of interest:
+     * edu.berkeley.scrapemonitor.config_file - ScrapeMonitor configuration file location.
+     * log4j.configurationFile - Log4j2 configuration file location.
+     */
+
+    // Pass along all system properties for the running application.
+    // This enables passing along "./gradlew -D..." parameters. 
+    // Example: ./gradlew -Dlog4j.configurationFile=etc/log4j2.properties
+    systemProperties System.getProperties()
+
+    // If you need to, can add additional run-time classpath files or
+    // directories with:
+    // classpath += files(...)
 }

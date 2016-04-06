@@ -136,7 +136,7 @@ class ScrapeMonitorDaemon {
         } else {
             configFile = new File(System.getProperty(CONFIG_FILE_PROPERTY_NAME))
             if (!configFile.exists())
-                throw new RuntimeException("System property $CONFIG_FILE_PROPERTY_NAME is set to ${configFile.absolutePath} but that file does not eixst")
+                throw new RuntimeException("System property $CONFIG_FILE_PROPERTY_NAME is set to ${configFile.absolutePath} but that file does not exist")
         }
         if (configFile.exists()) {
             log.info("Using config file ${configFile.absolutePath}")

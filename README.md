@@ -51,6 +51,7 @@ to your `local.env` file.
 You may also use the `run.sh` script that does the same thing using the
 `gradlew` wrapper instead.  The first argument to the script is the path to
 your config file.
+
 ```./run.sh /path/Config.groovy```
 
 Optionally, if you want to override the default `log4j2.properties` file:

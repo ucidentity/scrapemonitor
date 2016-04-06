@@ -40,7 +40,7 @@ that configures ScrapeMonitor.
 
 If you want to override the default
 [src/main/resources/log4j2.properties](src/main/resources/log4j2.properties)
-file, replace '/path/log4j2.properties` with the location of your own
+file, replace `/path/log4j2.properties` with the location of your own
 `log4j2.properties` file.  Otherwise, to use the default
 [src/main/resources/log4j2.properties](src/main/resources/log4j2.properties)
 file provided in the distribution, don't add a `SCRAPEMON_LOG4J_FILE` line

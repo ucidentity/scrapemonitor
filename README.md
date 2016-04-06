@@ -24,7 +24,7 @@ To make it easy, name it `local.env` and put it in the same directory as
 [runDist.sh](runDist.sh), which is the root directory of the source
 distribution.
 
-`local.env`:
+local.env:
 ```# Don't forget to run "gradle installDist" first
 
 # Mandatory

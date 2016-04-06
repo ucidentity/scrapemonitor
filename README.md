@@ -18,7 +18,7 @@ out alerts.
 ## Running
 
 If you did `gradle installDist`:
-```build/install/scrapemonitor/bin/scrapemonitor -Dedu.berkeley.scrapemonitor.config_file=/path/Config.groovy```
+```(export SCRAPEMONITOR_OPTS="-Dedu.berkeley.scrapemonitor.config_file=/path/Config.groovy"; build/install/scrapemonitor/bin/scrapemonitor)```
 
 Replace `/path/Config.groovy` with the path to your `Config.groovy` file
 that configures ScrapeMonitor.

@@ -47,6 +47,9 @@ then
   exit 1
 fi
 
+# helps if you need to run killall
+SCRAPEMONITOR_OPTS="-Dis.scrapemonitor=1 $SCRAPEMONITOR_OPTS"
+
 # If SCRAPEMON_ENV_FILE is not set, then try ./local.env
 if [ -n "$SCRAPEMON_ENV_FILE" ];
 then
@@ -100,4 +103,4 @@ echo "SCRAPEMONITOR_OPTS: $SCRAPEMONITOR_OPTS"
 
 echo "Starting..."
 (export SCRAPEMONITOR_OPTS; \
-  ${SCRIPT_DIR}/build/install/${APP_NAME}/bin/${APP_NAME})
+  ${SCRIPT_DIR}/build/install/${APP_NAME}/bin/${APP_NAME}) &
